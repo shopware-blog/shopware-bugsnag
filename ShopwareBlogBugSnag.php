@@ -21,8 +21,8 @@ class ShopwareBlogBugSnag extends Plugin
      */
     public function handleError(\Enlight_Controller_EventArgs $args)
     {
-        $bugsnag = new \Bugsnag_Client('INSERT-API-KEY-HERE');
-        set_error_handler(array($bugsnag, 'errorHandler'));
+        $bugsnag = new \Bugsnag_Client(0);
+//        set_error_handler(array($bugsnag, 'errorHandler'));
         set_exception_handler(array($bugsnag, 'exceptionHandler'));
     }
 }
