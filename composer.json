@@ -1,6 +1,7 @@
 {
   "name": "shopware-blog/shopware-bugsnag",
   "description": "A simple implementation for bugsnag.com in shopware",
+  "license": "MIT",
   "authors": [
     {
       "name": "Thomas Eiling",
