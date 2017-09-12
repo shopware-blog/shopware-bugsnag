@@ -21,8 +21,26 @@ class ShopwareBlogBugSnag extends Plugin
      */
     public function handleError(\Enlight_Controller_EventArgs $args)
     {
-        $bugsnag = new \Bugsnag_Client(0);
-//        set_error_handler(array($bugsnag, 'errorHandler'));
-        set_exception_handler(array($bugsnag, 'exceptionHandler'));
+        $front = $args->getSubject();
+
+        if ($front->getParam('noErrorHandler')) {
+            return;
+        }
+
+        $config = $this->container->get('shopware.plugin.config_reader')->getByPluginName($this->getName());
+        $apiKey = $config['apiKey'];
+        if (empty($apiKey)) {
+            return;
+        }
+
+        $bugSnag = new \Bugsnag_Client($apiKey);
+
+        if ($config['exceptionHandler']) {
+            set_exception_handler([$bugSnag, 'exceptionHandler']);
+        }
+
+        if ($config['errorHandler']) {
+            set_error_handler([$bugSnag, 'errorHandler']);
+        }
     }
 }
