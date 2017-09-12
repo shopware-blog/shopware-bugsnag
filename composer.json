@@ -1,0 +1,10 @@
+{
+  "name": "shopware-blog/shopware-bugsnag",
+  "description": "A simple implementation for bugsnag.com in shopware",
+  "authors": [
+    {
+      "name": "Thomas Eiling",
+      "email": "github@eiling.org"
+    }
+  ]
+}
