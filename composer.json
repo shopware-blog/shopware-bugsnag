@@ -7,5 +7,9 @@
       "name": "Thomas Eiling",
       "email": "github@eiling.org"
     }
-  ]
+  ],
+  "require": {
+    "bugsnag/bugsnag": "^3.0",
+    "guzzlehttp/guzzle": "5.3.3"
+  }
 }
