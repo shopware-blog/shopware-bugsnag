@@ -59,9 +59,13 @@ class BugsnagClient
             $bugsnagHandler->registerExceptionHandler(false);
         }
 
-//        if ($config['errorHandler']) {
-        $bugsnagHandler->registerErrorHandler(false);
-//        }
+        if ($config['errorHandler']) {
+            $bugsnagHandler->registerErrorHandler(false);
+        }
+
+        // restore default error handler
+        restore_error_handler();
+        restore_exception_handler();
     }
 
     private function getConfig(): array
