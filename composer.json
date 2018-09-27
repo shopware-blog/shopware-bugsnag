@@ -2,6 +2,10 @@
   "name": "shopware-blog/shopware-bugsnag",
   "description": "A simple implementation for bugsnag.com in shopware",
   "license": "MIT",
+  "type": "shopware-plugin",
+  "extra": {
+    "installer-name": "ShopwareBlogBugsnag"
+  },
   "authors": [
     {
       "name": "Thomas Eiling",
