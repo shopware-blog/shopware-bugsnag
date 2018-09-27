@@ -21,13 +21,14 @@ class BasicSubscriber implements SubscriberInterface
         return [
             'Enlight_Controller_Front_RouteShutdown' => ['handleError', 1000],
             'Enlight_Controller_Front_PostDispatch' => ['handleError', 1000],
+            'Shopware_Console_Add_Command' => ['handleError', 1000],
         ];
     }
 
     /**
      * @param \Enlight_Controller_EventArgs $args
      */
-    public function handleError(\Enlight_Controller_EventArgs $args)
+    public function handleError(\Enlight_Event_EventArgs $args)
     {
         $front = $args->getSubject();
         if ($front->getParam('noErrorHandler')) {

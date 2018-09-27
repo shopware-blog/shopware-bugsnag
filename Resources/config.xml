@@ -6,13 +6,18 @@
             <name>apiKey</name>
             <label>Bugsnag API-Key</label>
         </element>
-        <element scope="shop" required="false" type="boolean">
+        <element required="false" type="boolean">
             <name>exceptionHandler</name>
             <label>Exception Handler aktivieren:</label>
         </element>
-        <element scope="shop" required="false" type="boolean">
+        <element required="false" type="boolean">
             <name>errorHandler</name>
             <label>Error Handler aktivieren:</label>
+            <description>Diese Option beeinflusst stark die Performance!</description>
+        </element>
+        <element required="false" type="boolean">
+            <name>anonymizeIp</name>
+            <label>IP Adresse anonymisieren:</label>
         </element>
     </elements>
 </config>
