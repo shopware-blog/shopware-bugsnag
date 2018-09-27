@@ -31,6 +31,18 @@ class BugsnagClient
             } else {
                 $this->bugsnagClient = Client::make($config['apiKey']);
             }
+
+            if ($config['anonymizeIp']) {
+                $this->bugsnagClient->registerCallback(
+                    function ($report) {
+                        // replaces the automatically collected IP
+                        $report->setUser(['id' => null]);
+
+                        // replaces the automatically collected IP
+                        $report->addMetaData(['request' => ['clientIp' => null],]);
+                    }
+                );
+            }
         }
 
         return $this->bugsnagClient;
@@ -38,17 +50,18 @@ class BugsnagClient
 
     public function registerHandler()
     {
-        $bugsnag = $this->getInstance();
         $config = $this->getConfig();
+        $bugsnag = $this->getInstance();
 
         $bugsnagHandler = new \Bugsnag\Handler($bugsnag);
+
         if ($config['exceptionHandler']) {
             $bugsnagHandler->registerExceptionHandler(false);
         }
 
-        if ($config['errorHandler']) {
-            $bugsnagHandler->registerErrorHandler(false);
-        }
+//        if ($config['errorHandler']) {
+        $bugsnagHandler->registerErrorHandler(false);
+//        }
     }
 
     private function getConfig(): array
