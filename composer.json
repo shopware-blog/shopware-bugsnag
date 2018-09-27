@@ -13,6 +13,7 @@
     }
   ],
   "require": {
+    "php": "^7.0",
     "bugsnag/bugsnag": "^3.0",
     "guzzlehttp/guzzle": "5.3.3"
   }
